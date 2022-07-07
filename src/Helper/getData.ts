@@ -6,7 +6,7 @@ export const getUserSearch = async (search: string) => {
         if(search.length > 0) {
             const options = {
                 headers : {
-                    'Authorization': `token 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`
+                    'Authorization': `token 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`
                 }
             }
             const res = await axios.get(`https://api.github.com/search/users?q=${search}`,options)
@@ -14,7 +14,7 @@ export const getUserSearch = async (search: string) => {
             return data;
         }
     } catch (error) {
-        console.log("error getSearch", error)
+        console.log("error getUserSearch", error)
     }
 }
 
@@ -23,7 +23,7 @@ export const getReposSearch = async (search: string) => {
         if(search.length > 0) {
             const options = {
                 headers : {
-                    'Authorization': `token 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`
+                    'Authorization': `token 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`
                 }
             }
             const res = await axios.get(`https://api.github.com/users/${search}/repos`,options)
@@ -31,6 +31,6 @@ export const getReposSearch = async (search: string) => {
             return data;
         }
     } catch (error) {
-        console.log("error getSearch", error)
+        console.log("error getReposSearch", error)
     }
 }
