@@ -1,0 +1,26 @@
+.card-repos {
+    width: 369px;
+    height: 197px;
+    background: #E5E9F0;
+    box-shadow: 5px 1px 13px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    text-align: left;
+    padding: 41px 39px;
+    margin-top: 53PX;
+}
+
+.card-repos .repo-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 29px;
+    margin-bottom: 64px;
+
+}
+
+.card-repos .repo-language {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}

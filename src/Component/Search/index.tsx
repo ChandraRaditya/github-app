@@ -23,10 +23,23 @@ const Search = () => {
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(searchQuery(search));
+    setUser([]);
+  };
+
+  const handleLiOnClick = (text: string) => {
+    setSearch(text);
+    setUser([]);
   };
 
   const listUser = user?.slice(0, 5).map((val) => {
-    return <li className="autosuggestion-item">{val.login}</li>;
+    return (
+      <li
+        onClick={() => handleLiOnClick(val.login)}
+        className="autosuggestion-item"
+      >
+        {val.login}
+      </li>
+    );
   });
 
   return (
@@ -40,8 +53,11 @@ const Search = () => {
           type="text"
           value={search}
         />
+        <button className="btn-submit" type="submit">
+          Search
+        </button>
       </form>
-      <ul className="search-autosuggestion">{listUser}</ul>
+      <ul className="search-autosuggestion">{search ? listUser : null}</ul>
     </div>
   );
 };
