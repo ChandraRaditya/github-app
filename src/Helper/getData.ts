@@ -1,12 +1,14 @@
 import axios from "axios"
 import { Item, Repos } from "./interface";
 
+const token = "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"
+
 export const getUserSearch = async (search: string) => {
     try {
         if(search.length > 0) {
             const options = {
                 headers : {
-                    'Authorization': `token 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`
+                    'Authorization': `token ${token}`
                 }
             }
             const res = await axios.get(`https://api.github.com/search/users?q=${search}`,options)
@@ -23,7 +25,7 @@ export const getReposSearch = async (search: string) => {
         if(search.length > 0) {
             const options = {
                 headers : {
-                    'Authorization': `token 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`
+                    'Authorization': `token ${token}`
                 }
             }
             const res = await axios.get(`https://api.github.com/users/${search}/repos`,options)
