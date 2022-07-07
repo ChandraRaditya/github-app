@@ -1,7 +1,7 @@
 import axios from "axios"
 import { Item, Repos } from "./interface";
 
-const token = "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"
+const token = process.env.REACT_APP_TOKEN
 
 export const getUserSearch = async (search: string) => {
     try {
