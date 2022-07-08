@@ -9,7 +9,6 @@
 
 .card-repos-container {
     padding: 0 65px 0;
-    margin-top: 118px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -17,7 +16,20 @@
     flex-wrap: wrap;
 }
 
+.show-number-container {
+    margin-left: 70px;
+    align-self: flex-start;
+    margin-top: 118px;
+}
+
+.show-number-text {
+    font-size: 18px;
+    display: inline-block;
+}
+
 #content-number {
+    margin-left: 5px;
+    margin-top: 5px;
     font-size: 17px;
     width: 56px;
     height: 36px;

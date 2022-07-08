@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Item {
     login: string;
     id: number;
@@ -33,4 +35,9 @@ export interface ReposDetail {
     updated_at: Date;
     description: string;
     language: string
+}
+
+export interface pagination {
+    contentNumber: number;
+    contentLength: number | undefined;
 }

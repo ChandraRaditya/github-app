@@ -20,7 +20,7 @@ export const getUserSearch = async (search: string) => {
     }
 }
 
-export const getReposSearch = async (search: string, contentNumber: number) => {
+export const getReposSearchWithPage = async (search: string, contentNumber: number, page: number) => {
     try {
         if(search.length > 0) {
             const options = {
@@ -28,7 +28,24 @@ export const getReposSearch = async (search: string, contentNumber: number) => {
                     'Authorization': `token ${token}`
                 }
             }
-            const res = await axios.get(`https://api.github.com/users/${search}/repos?per_page=${contentNumber}`,options)
+            const res = await axios.get(`https://api.github.com/users/${search}/repos?per_page=${contentNumber}&page=${page}`,options)
+            const data: Repos[] = res.data
+            return data;
+        }
+    } catch (error) {
+        console.log("error getReposSearch", error)
+    }
+}
+
+export const getReposSearch = async (search: string) => {
+    try {
+        if(search.length > 0) {
+            const options = {
+                headers : {
+                    'Authorization': `token ${token}`
+                }
+            }
+            const res = await axios.get(`https://api.github.com/users/${search}/repos`,options)
             const data: Repos[] = res.data
             return data;
         }

@@ -31,9 +31,10 @@ const Search = () => {
     setUser([]);
   };
 
-  const listUser = user?.slice(0, 5).map((val) => {
+  const listUser = user?.slice(0, 5).map((val, id) => {
     return (
       <li
+        key={id}
         onClick={() => handleLiOnClick(val.login)}
         className="autosuggestion-item"
       >
