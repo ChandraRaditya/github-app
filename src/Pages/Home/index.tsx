@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CardRepos from "../../Component/CardRepos";
 import Modal from "../../Component/Modal";
 import Pagination from "../../Component/Pagination";
 import Search from "../../Component/Search";
 import { getReposSearch, getReposSearchWithPage } from "../../Helper/getData";
 import { Repos } from "../../Helper/interface";
+import { pagesQuery } from "../../Redux/slicePages";
 import "./index.css";
 
 function Home() {
@@ -20,6 +21,11 @@ function Home() {
   const currentPage: number = useSelector(
     (state: any) => state.pagesData.value
   );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(pagesQuery(1));
+  }, [currentPage, currentSearch, dispatch]);
 
   useEffect(() => {
     getReposSearch(currentSearch).then((response) => {
