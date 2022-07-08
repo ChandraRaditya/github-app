@@ -26,6 +26,7 @@ export interface Repos {
     id: number;
     name: string;
     language: string
+    handleCardClicked: React.MouseEventHandler;
 }
 
 export interface ReposDetail {
@@ -41,3 +42,7 @@ export interface pagination {
     contentNumber: number;
     contentLength: number | undefined;
 }
+
+export interface buttonCloseModal {
+    handleModalClosed: React.MouseEventHandler;
+  }

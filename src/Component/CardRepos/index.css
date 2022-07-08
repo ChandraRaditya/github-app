@@ -7,6 +7,7 @@
     text-align: left;
     padding: 41px 39px;
     margin-top: 53PX;
+    cursor: pointer;
 }
 
 .card-repos .repo-title {

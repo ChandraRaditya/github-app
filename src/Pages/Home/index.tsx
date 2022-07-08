@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CardRepos from "../../Component/CardRepos";
+import Modal from "../../Component/Modal";
 import Pagination from "../../Component/Pagination";
 import Search from "../../Component/Search";
 import { getReposSearch, getReposSearchWithPage } from "../../Helper/getData";
@@ -11,6 +12,7 @@ function Home() {
   const [repo, setRepo] = useState<Repos[] | undefined>([]);
   const [repoWithPage, setRepoWithPage] = useState<Repos[] | undefined>([]);
   const [number, setNumber] = useState(5);
+  const [openModal, setOpenModal] = useState(false);
   const currentSearch: string = useSelector(
     (state: any) => state.serachData.value
   );
@@ -32,9 +34,23 @@ function Home() {
     );
   }, [currentPage, currentSearch, number]);
 
+  const handleCardClicked = () => {
+    setOpenModal(true);
+  };
+
+  const handleModalClosed = () => {
+    setOpenModal(false);
+  };
+
   const cardRepo = repoWithPage?.map((val, id) => {
     return (
-      <CardRepos key={id} id={val.id} name={val.name} language={val.language} />
+      <CardRepos
+        key={id}
+        id={val.id}
+        name={val.name}
+        language={val.language}
+        handleCardClicked={handleCardClicked}
+      />
     );
   });
 
@@ -66,6 +82,7 @@ function Home() {
         </div>
         <Pagination contentNumber={number} contentLength={repo?.length} />
       </div>
+      {openModal ? <Modal handleModalClosed={handleModalClosed} /> : null}
     </div>
   );
 }
