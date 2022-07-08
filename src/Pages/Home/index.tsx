@@ -13,6 +13,7 @@ function Home() {
   const [repoWithPage, setRepoWithPage] = useState<Repos[] | undefined>([]);
   const [number, setNumber] = useState(5);
   const [openModal, setOpenModal] = useState(false);
+  const [dataModal, setDataModal] = useState<any[]>([]);
   const currentSearch: string = useSelector(
     (state: any) => state.serachData.value
   );
@@ -34,7 +35,15 @@ function Home() {
     );
   }, [currentPage, currentSearch, number]);
 
-  const handleCardClicked = () => {
+  const handleCardClicked = (
+    id: any,
+    name: any,
+    language: any,
+    description: any,
+    created_at: any,
+    updated_at: any
+  ) => {
+    setDataModal([id, name, language, description, created_at, updated_at]);
     setOpenModal(true);
   };
 
@@ -49,6 +58,9 @@ function Home() {
         id={val.id}
         name={val.name}
         language={val.language}
+        description={val.description}
+        created_at={val.created_at}
+        updated_at={val.updated_at}
         handleCardClicked={handleCardClicked}
       />
     );
@@ -82,7 +94,17 @@ function Home() {
         </div>
         <Pagination contentNumber={number} contentLength={repo?.length} />
       </div>
-      {openModal ? <Modal handleModalClosed={handleModalClosed} /> : null}
+      {openModal ? (
+        <Modal
+          id={dataModal[0]}
+          name={dataModal[1]}
+          language={dataModal[2]}
+          description={dataModal[3]}
+          created_at={dataModal[4]}
+          updated_at={dataModal[5]}
+          handleModalClosed={handleModalClosed}
+        />
+      ) : null}
     </div>
   );
 }

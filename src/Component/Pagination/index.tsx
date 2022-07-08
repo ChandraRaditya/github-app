@@ -1,9 +1,12 @@
 import { useDispatch } from "react-redux";
-import { pagination } from "../../Helper/interface";
+import { paginationProps } from "../../Helper/interface";
 import { pagesQuery } from "../../Redux/slicePages";
 import "./index.css";
 
-const Pagination: React.FC<pagination> = ({ contentNumber, contentLength }) => {
+const Pagination: React.FC<paginationProps> = ({
+  contentNumber,
+  contentLength,
+}) => {
   const pageNumbers: number[] = [];
   const dispatch = useDispatch();
 

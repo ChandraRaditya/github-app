@@ -5,10 +5,25 @@ const CardRepos: React.FC<Repos> = ({
   id,
   name,
   language,
+  description,
+  created_at,
+  updated_at,
   handleCardClicked,
 }) => {
   return (
-    <div onClick={handleCardClicked} className="card-repos">
+    <div
+      onClick={() =>
+        handleCardClicked(
+          id,
+          name,
+          language,
+          description,
+          created_at,
+          updated_at
+        )
+      }
+      className="card-repos"
+    >
       <p className="repo-title">
         [{id}] {name}
       </p>

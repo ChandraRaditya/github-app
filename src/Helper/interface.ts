@@ -25,24 +25,24 @@ export interface Item {
 export interface Repos {
     id: number;
     name: string;
-    language: string
-    handleCardClicked: React.MouseEventHandler;
-}
-
-export interface ReposDetail {
-    id: number;
-    name: string;
     created_at: Date;
     updated_at: Date;
     description: string;
-    language: string
+    language: string;
+    handleCardClicked: any;
 }
 
-export interface pagination {
+export interface paginationProps {
     contentNumber: number;
     contentLength: number | undefined;
 }
 
-export interface buttonCloseModal {
-    handleModalClosed: React.MouseEventHandler;
+export interface modalProps {
+    id: number;
+    name: string;
+    created_at?: React.ReactNode;
+    updated_at?: React.ReactNode;
+    description: string;
+    language: string;
+    handleModalClosed: any;
   }
